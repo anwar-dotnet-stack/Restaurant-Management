@@ -1,0 +1,51 @@
+﻿@{
+    ViewData["Title"] = "Add Account";
+
+}
+
+@model UserAccount
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg rounded-4">
+                <div class="card-body p-4">
+                    <h3 class="text-center mb-4 text-primary">Create a new account</h3>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <form asp-action="Register" method="post" style="padding:100px;">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label for="Email" asp-for="User_Email" class="form-label"></label>
+        <input asp-for="User_Email" type="text" class="form-control" id="Email">
+        <span class="text-danger" asp-validation-for="User_Email"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="em1" asp-for="Password" class="form-label">Password</label>
+        <input asp-for="Password" type="password" class="form-control" id="em1">
+        <span class="text-danger" asp-validation-for="Password"></span>
+    </div>
+
+    <div class="mb-3">
+        <label for="co" asp-for="Confirm_Password" class="form-label"> Confirm_Password</label>
+        <input asp-for="Confirm_Password" type="password" class="form-control" id="co">
+        <span class="text-danger" asp-validation-for="Confirm_Password"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100 rounded-3">Register</button>
+   
+    <div class="text-center mt-3">
+        <span>Do you already have an account?</span>
+        <a asp-action="login" class="text-decoration-none">Log in</a>
+    </div>
+   
+    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
